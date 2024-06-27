@@ -178,6 +178,8 @@ GERAL
 }
 
 .effect-border.border-position-bottom {
+    bottom: 0;
+    top: unset;
     border-radius: 0px 0px 4px 4px;
 }
 
@@ -326,10 +328,12 @@ SLIDER
     font-size: 65px;
     line-height: 58px;
     text-align: left;
+    overflow: hidden;
 }
 
 .slider-element .slider-caption div {
     font-weight: 200;
+    overflow: hidden;
 }
 
 .slider-element .slider-caption span {
@@ -435,25 +439,6 @@ FEATURED ITENS
 
 /*
 ----------------------------------
-CATEGORIES
-----------------------------------
-*/
-
-.categories-posts {
-
-}
-
-.categories-posts .category-item {
-    background-color: #ffffff;
-    position: relative;
-}
-
-.categories-posts .category-item.category-item-odd {
-    background-color: #F7F7F7;
-}
-
-/*
-----------------------------------
 OVERLAY POSTS
 ----------------------------------
 */
@@ -540,4 +525,123 @@ OVERLAY POSTS
 .overlay-card-hover .post-featured-item:hover .foot .action {
     left: 0;
     transform: translate(-46%, 0)
+}
+
+/*
+----------------------------------
+CATEGORIES
+----------------------------------
+*/
+
+.categories-with-posts {
+    padding: 60px 0;
+}
+
+.categories-with-posts .category-item {
+    position: relative;
+    margin-bottom: 12px;
+    padding: 2rem;
+    border-radius: 10px;
+    width: 100%;
+    background-color: #ffffff;
+}
+
+.categories-with-posts .category-item.category-item-odd {
+    background-color: #F7F7F7;
+}
+
+.categories-with-posts .category-item h1 {
+    font-size: 40px;
+}
+
+.categories-with-posts .category-item .subtitle {
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.categories-with-posts .category-item .see-more a {
+    font-size: 12px;
+    padding: 8px 20px;
+    font-weight: 600;
+}
+
+/*
+----------------------------------
+CATEGORIES >>> POSTS
+----------------------------------
+*/
+
+.category-posts .category-posts-item {
+    overflow: hidden;
+    position: relative;
+    border-radius: 8px;
+}
+
+.category-posts .category-posts-item .content,
+.category-posts .category-posts-item .post-featured-banner {
+    position: relative;
+}
+
+.category-posts .category-posts-item .post-featured-banner {
+    border-radius: 8px;
+    width: 100%;
+    height: 105px;
+}
+
+.category-posts .category-posts-item .content {
+    padding: 18px;
+}
+
+.category-posts .category-posts-item .content .title a {
+    text-decoration: none;
+    color: #333333;
+    font-weight: 600;
+    line-height: 16px;
+    font-size: 12px;
+    display: block;
+    overflow: hidden;
+    margin-bottom: 10px;
+    margin-right: 8px;
+}
+
+.category-posts .category-posts-item .content .foot {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.category-posts .category-posts-item .content .date {
+    font-size: 11px;
+    font-weight: 400;
+    color: #333333;
+}
+
+.category-posts .category-posts-item .content .action {
+    color: #333333;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.category-posts .category-posts-item {
+    transition: background-color var(--ezoom-animation-duration) var(--ezoom-animation-name);
+}
+
+.category-posts .category-posts-item:hover {
+    background-color: var(--item-color);
+}
+
+.category-posts .category-posts-item:hover .content,
+.category-posts .category-posts-item:hover .content .title a,
+.category-posts .category-posts-item:hover .content .date,
+.category-posts .category-posts-item:hover .content .action {
+    color: #ffffff;
+}
+
+.category-posts.category-posts-contrast .category-posts-item:hover .content,
+.category-posts.category-posts-contrast .category-posts-item:hover .content .title a,
+.category-posts.category-posts-contrast .category-posts-item:hover .content .date,
+.category-posts.category-posts-contrast .category-posts-item:hover .content .action {
+    color: #333333;
 }

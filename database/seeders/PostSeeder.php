@@ -37,7 +37,7 @@ class PostSeeder extends Seeder
 
         // criando 3 posts para categoria ESPORTES
         foreach (range(1, 3) as $key) {
-            Posts::factory()->withCategory(1, $key)->setHighlight($key == 3)->create();
+            Posts::factory()->withCategory(1, $key)->setHighlight($key == 1)->create();
             sleep(1);
         }
 

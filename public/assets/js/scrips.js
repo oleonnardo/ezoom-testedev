@@ -29,6 +29,12 @@ const EZOOM = {
                 let color = $this.data('border-color');
                 let position_border = typeof $this.data('border-position') === "string" ?
                     'border-position-' + $this.data('border-position') : '';
+                let parent = typeof $this.data('border-parent') === "string" ?
+                    $this.data('border-parent') : null;
+
+                if (parent) {
+                    $this = $this.find(parent);
+                }
 
                 $this.append(`<div class="featured-border effect-border ${position_border}" style="background-color: ${color}"></div>`);
             })

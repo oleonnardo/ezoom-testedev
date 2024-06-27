@@ -1,6 +1,6 @@
 @extends('site.layout.app')
 
-@section('sliders')
+@section('slider')
     <section id="slider" class="slider-element min-vh-100 include-header">
         <div class="slider-inner">
             <div class="container">
@@ -40,15 +40,22 @@
 @section('content-body')
     <section id="highlights">
         <div class="posts-featured overlay-card-hover">
-            @foreach($highlights as $item)
-                <div class="post-featured-item"
-                     data-border-color="{{ $item->category->color }}"
-                     data-border-position="top"
-                     data-background="{{ $item->image }}">
+            @foreach($highlights as $post)
+                <div class="post-featured-item position-relative"
+                     data-border-color="{{ $category->color ?? $post->category->color }}"
+                     data-border-position="{{ $border_position ?? 'top' }}"
+                     data-background="{{ $post->image }}">
                     <div class="content">
-                        <div class="title"><a href="#">{{ $item->title }}</a></div>
+                        <div class="title"><a href="#">{{ $post->title }}</a></div>
                         <div class="foot">
-                            <div class="date">{{ $item->created_at->translatedFormat('j \d\e F Y') }}</div>
+                            <div class="date">
+                                {{--
+                                $post->created_at->translatedFormat('j \d\e F Y')
+                                // nao retorna com a primeira letra do mês em maiúsculo, mas funcional
+                                opção 2:
+                                --}}
+                                {{ $post->created_at->day . ' de ' }} <span class="text-capitalize">{{ $post->created_at->getTranslatedMonthName() }}</span> {{ $post->created_at->year }}
+                            </div>
                             <a href="#" class="action"><i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                     </div>
@@ -60,7 +67,7 @@
     <section id="posts">
         <div class="container">
             <div class="categories-with-posts">
-                each('site.home._category_with_posts', $postsByCategory, 'category')
+                @each('site.home.partials.category_posts', $postsByCategory, 'category')
             </div>
         </div>
     </section>
