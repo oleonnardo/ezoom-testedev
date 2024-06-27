@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -11,13 +12,14 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $slug
  * @property string $image
  * @property string $content
+ * @property boolean $highlight
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
  */
 class Posts extends Model
 {
-    use SoftDeletes;
+    use SoftDeletes, HasFactory;
 
     protected $table = 'posts';
 
@@ -27,9 +29,11 @@ class Posts extends Model
         'slug',
         'image',
         'content',
+        'highlight'
     ];
 
     protected $casts = [
+        'highlight' => 'boolean',
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
         'deleted_at' => 'datetime'

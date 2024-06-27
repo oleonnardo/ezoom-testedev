@@ -9,12 +9,9 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => null,
             'short_description' => 'Lorem Ipsum dolor Sit Amet Lorem.',
-            'color' => null,
-            'highlight' => 1,
-            'contrast' => null,
-            'active' => 1
+            'highlight' => true,
+            'active' => true
         ];
     }
 
