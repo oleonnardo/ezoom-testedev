@@ -1,5 +1,7 @@
 :root {
     --ezoom-height-header: 145px;
+    --ezoom-animation-duration: 0.15s;
+    --ezoom-animation-name: linear;
 }
 
 
@@ -152,6 +154,7 @@ GERAL
 }
 
 .btn-outline-black:hover {
+    color: #ffffff;
     background-color: #333333;
 }
 
@@ -161,6 +164,7 @@ GERAL
     left: 0;
     width: 100%;
     height: 8px;
+    z-index: 20;
 }
 
 .effect-border.border-position-top {
@@ -345,19 +349,21 @@ FEATURED ITENS
 */
 
 .posts-featured {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
+    display: grid;
+    align-content: center;
     align-items: center;
-    justify-content: flex-start;
+    justify-items: stretch;
+    justify-content: center;
+    grid-template-columns: repeat(5, 1fr);
 }
 
 .posts-featured .post-featured-item {
     max-height: 250px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
     position: relative;
     cursor: pointer;
+    overflow: hidden;
 }
 
 .posts-featured a {
@@ -395,46 +401,36 @@ FEATURED ITENS
     font-weight: 700;
     line-height: 18px;
     text-align: left;
-    margin-right: 40px;
+    padding-right: 30px;
     font-size: 14px;
     z-index: 5;
+    overflow: hidden;
 }
 
 .post-featured-item .foot {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: space-between;
+    display: block;
     width: 100%;
-    padding: 10px 0;
+    min-height: 20px;
+    overflow: hidden;
+    margin: 0 0 10px;
     z-index: 5;
+    position: relative;
 }
 
 .post-featured-item .foot .date {
+    position: absolute;
+    bottom: 0;
+    left: 0;
     font-weight: 400;
     font-style: normal;
     font-size: 13px;
 }
 
-.post-featured-item .foot .action a {
+.post-featured-item .foot .action {
     color: #ffffff;
-}
-
-/* hover: add depois .post-featured-item:hover */
-.post-featured-item {
-
-}
-
-.post-featured-item .foot {
-    display: flex;
-    flex-direction: column;
-    align-content: flex-start;
-    align-items: flex-start;
-}
-
-.post-featured-item .foot {
-
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }
 
 /*
@@ -454,4 +450,94 @@ CATEGORIES
 
 .categories-posts .category-item.category-item-odd {
     background-color: #F7F7F7;
+}
+
+/*
+----------------------------------
+OVERLAY POSTS
+----------------------------------
+*/
+
+.post-featured-item .content::after {
+    transition: background var(--ezoom-animation-duration) var(--ezoom-animation-name);
+    -webkit-transition: background var(--ezoom-animation-duration) var(--ezoom-animation-name);
+    -ms-transition: background var(--ezoom-animation-duration) var(--ezoom-animation-name);
+    -o-transition: background var(--ezoom-animation-duration) var(--ezoom-animation-name);
+}
+
+.overlay-card-hover .post-featured-item:hover .content::after {
+    background: linear-gradient(0deg, rgba(0,0,0,0.7728714288449755) 33%, rgba(0,0,0,0.724385322976847) 60%, rgba(0,0,0,0.620743866394214) 87%, rgba(0,0,0,0.4134609532289478) 100%);
+}
+
+.overlay-card-hover .post-featured-item .content .foot {
+    transition: display var(--ezoom-animation-duration) var(--ezoom-animation-name);
+    -webkit-transition: display var(--ezoom-animation-duration) var(--ezoom-animation-name);
+    -ms-transition: display var(--ezoom-animation-duration) var(--ezoom-animation-name);
+    -o-transition: display var(--ezoom-animation-duration) var(--ezoom-animation-name);
+}
+
+.overlay-card-hover .post-featured-item:hover .content .foot  {
+    flex-direction: column;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+}
+
+.overlay-card-hover .post-featured-item .title,
+.overlay-card-hover .post-featured-item .title a {
+    transition: padding var(--ezoom-animation-duration) var(--ezoom-animation-name);
+}
+
+.overlay-card-hover .post-featured-item .title a {
+    transition: font-size var(--ezoom-animation-duration) var(--ezoom-animation-name);
+}
+
+.overlay-card-hover .post-featured-item:hover .title {
+    padding: 0 22px 25px 0px;
+}
+
+.overlay-card-hover .post-featured-item:hover .title a {
+    padding: 0;
+    font-size: 16px;
+}
+
+.overlay-card-hover .post-featured-item .foot .date {
+    width: 100%;
+    transition: padding calc(var(--ezoom-animation-duration) + .1s) var(--ezoom-animation-name);
+}
+
+.overlay-card-hover .post-featured-item .foot {
+    min-height: 55px;
+    position: relative;
+}
+
+.overlay-card-hover .post-featured-item .foot .date {
+    width: 100%;
+    transition: bottom calc(var(--ezoom-animation-duration) + .1s) var(--ezoom-animation-name);
+}
+
+.overlay-card-hover .post-featured-item:hover .foot .date {
+    bottom: 40px;
+    left: 0;
+    font-size: 11px;
+}
+
+.overlay-card-hover .post-featured-item:hover .foot .action,
+.overlay-card-hover .post-featured-item:hover .foot .action i {
+    color: #42B073;
+}
+
+.overlay-card-hover .post-featured-item .foot .action {
+    text-align: center;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    transform: translate(0, 0);
+    transition: transform var(--ezoom-animation-duration) var(--ezoom-animation-name);
+}
+
+.overlay-card-hover .post-featured-item:hover .foot .action {
+    left: 0;
+    transform: translate(-46%, 0)
 }
