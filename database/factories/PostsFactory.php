@@ -17,6 +17,7 @@ class PostsFactory extends Factory
             'title' => $title,
             'slug' => $slug,
             'highlight' => false,
+            'active' => true,
             'content' => $this->faker->paragraphs(asText: true),
             'created_at' => Carbon::parse('2023-04-10 00:00:00')
         ];

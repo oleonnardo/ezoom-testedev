@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('image');
             $table->text('content');
             $table->boolean('highlight')->default(0);
+            $table->boolean('active')->default(1);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrentOnUpdate();
             $table->timestamp('deleted_at')->nullable();

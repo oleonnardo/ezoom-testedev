@@ -37,7 +37,6 @@
                         <li><a href="#"><i class="icon-line-microphone"></i></a></li>
                         <li><a href="#"><i class="fa-brands fa-linkedin"></i></a></li>
                     </div>
-
                 </div>
             </div>
         </div>

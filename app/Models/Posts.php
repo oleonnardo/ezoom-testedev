@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property string $image
  * @property string $content
  * @property boolean $highlight
+ * @property boolean $active
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $deleted_at
@@ -29,11 +30,13 @@ class Posts extends Model
         'slug',
         'image',
         'content',
-        'highlight'
+        'highlight',
+        'active',
     ];
 
     protected $casts = [
         'highlight' => 'boolean',
+        'active' => 'boolean',
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
         'deleted_at' => 'datetime'

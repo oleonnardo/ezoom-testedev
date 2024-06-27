@@ -38,4 +38,14 @@ class PostRepository implements RepositoryInterface
     {
         return Posts::destroy($id) === 1;
     }
+
+    public function featuredPosts($limit = 5)
+    {
+        return Posts::with('category')
+            ->where('highlight', '=', 1)
+            ->where('active', '=', 1)
+            ->limit($limit)
+            ->latest()
+            ->get();
+    }
 }

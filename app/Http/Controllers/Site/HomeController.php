@@ -3,23 +3,23 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
-use App\Services\PostService;
+use App\Repositories\PostRepository;
 
 class HomeController extends Controller
 {
-    protected $postService;
+    protected $postRepository;
 
-    public function __construct(PostService $postService)
+    public function __construct(PostRepository $postRepository)
     {
-        $this->postService = $postService;
+        $this->postRepository = $postRepository;
     }
 
     public function home()
     {
-        $posts = [];
+        $postsByCategory = [];
 
-        $categories = [];
+        $highlights = $this->postRepository->featuredPosts();
 
-        return view('site.home.index', compact('categories'));
+        return view('site.home.index', compact('highlights', 'postsByCategory'));
     }
 }
