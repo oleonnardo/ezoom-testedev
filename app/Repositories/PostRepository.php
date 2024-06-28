@@ -5,6 +5,7 @@ namespace App\Repositories;
 use App\Interfaces\RepositoryInterface;
 use App\Models\Posts;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 
 class PostRepository implements RepositoryInterface
@@ -13,6 +14,7 @@ class PostRepository implements RepositoryInterface
     {
         return Posts::with('category')
             ->filter($filter)
+            ->orderBy('id', Arr::get($filter, 'order', 'asc'))
             ->paginate();
     }
 

@@ -4,7 +4,7 @@ namespace App\ModelFilters;
 
 use EloquentFilter\ModelFilter;
 
-class PostFilter extends ModelFilter
+class PostsFilter extends ModelFilter
 {
 
 }

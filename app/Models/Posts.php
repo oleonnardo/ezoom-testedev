@@ -25,6 +25,10 @@ class Posts extends Model
 
     protected $table = 'posts';
 
+    protected $perPage = 10;
+
+    public static $imageFolder = 'uploads/posts/';
+
     protected $fillable = [
         'category_id',
         'title',

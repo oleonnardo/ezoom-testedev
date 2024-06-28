@@ -13,7 +13,7 @@ class CategoryRepository implements RepositoryInterface
 {
     public function all(array $filter = [])
     {
-        return Category::filter($filter)->paginate();
+        return Category::filter($filter)->get();
     }
 
     public function getById(int $id)

@@ -2,5 +2,6 @@
 
 return [
     App\Providers\AppServiceProvider::class,
-    EloquentFilter\ServiceProvider::class
+    EloquentFilter\ServiceProvider::class,
+    Spatie\Html\HtmlServiceProvider::class
 ];

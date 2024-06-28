@@ -17,8 +17,10 @@ class FileService
 
     public function save(UploadedFile $file, string $path): string
     {
+        $path = rtrim($path,'/');
         $filename = Uuid::fromDateTime(now()) . '.' . $file->getClientOriginalExtension();
-        return $file->storeAs($path, $filename, $this->disk);
+
+        return $this->url($file->storeAs($path, $filename, $this->disk));
     }
 
     public function update(UploadedFile $file, string $path, $old_image = null): string
@@ -33,5 +35,10 @@ class FileService
     public function delete(string $path): bool
     {
         return Storage::disk($this->disk)->delete($path);
+    }
+
+    private function url($filepath)
+    {
+        return Storage::disk($this->disk)->url($filepath);
     }
 }

@@ -8,6 +8,14 @@ a {
     text-decoration: none;
 }
 
+.form-group {
+    margin-bottom: 20px;
+}
+
+.table-middle td,
+.table-middle th {
+    vertical-align: middle;
+}
 
 .ft-thin {
     font-family: "Barlow", sans-serif;
