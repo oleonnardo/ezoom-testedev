@@ -12,10 +12,23 @@
                     <div class="card-body">
 
                         <div class="py-3 text-right">
+                            <button type="button"
+                                    data-bs-toggle="collapse"
+                                    data-bs-target="#posts-collapse"
+                                    class="btn btn-secondary">
+                                <i class="fa-solid fa-filter"></i>
+                                {{ __('Filtrar') }}
+                            </button>
+
                             <a href="{{ route('adm.posts.create') }}" class="btn btn-primary">
                                 <i class="fa-solid fa-plus"></i>
                                 {{ __('Novo') }}
                             </a>
+                        </div>
+
+                        <div class="{{ count(Request::all()) ? 'collapsed show' : 'collapse' }} py-3"
+                             id="posts-collapse">
+                            @include('admin.posts._filters')
                         </div>
 
                         <div class="table-responsive">
@@ -50,14 +63,16 @@
                                                     ->route('adm.posts.activeToggle', $item->id)
                                                     ->open() }}
                                                 <button type="submit"
-                                                        data-toggle="tooltip"
-                                                        title="{{ __($item->active ? 'Desativar?' : 'Ativar?')  }}"
+                                                        data-bs-toggle="tooltip"
+                                                        title="{{ __($item->active ? 'Desativar post' : 'Ativar post')  }}"
                                                         class="text-black-50 mr-3">
                                                     <i class="fa-solid {{ $item->active ? 'fa-lock' : 'fa-lock-open' }}"></i>
                                                 </button>
                                                 {{ html()->form()->close() }}
 
                                                 <a href="{{ route('adm.posts.edit', $item->id) }}"
+                                                   data-bs-toggle="tooltip"
+                                                   title="{{ __('Editar')  }}"
                                                    class="text-black-50 mr-3">
                                                     <i class="fa-solid fa-pencil"></i>
                                                 </a>
@@ -68,6 +83,8 @@
                                                     ->open() }}
                                                     @method('DELETE')
                                                     <button type="submit"
+                                                            data-bs-toggle="tooltip"
+                                                            title="{{ __('Remover')  }}"
                                                             class="text-black-50"
                                                             onclick="return confirm('{{ __('Tem certeza?') }}') ">
                                                         <i class="fa-solid fa-trash-alt"></i>

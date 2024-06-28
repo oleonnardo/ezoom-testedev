@@ -12,6 +12,16 @@ a {
     margin-bottom: 20px;
 }
 
+.tooltip {
+    overflow: visible;
+}
+
+.label-sm {
+    font-size: 14px;
+    color: #333333;
+    opacity: .8;
+}
+
 .badge-status {
     width: 10px;
     height: 10px;

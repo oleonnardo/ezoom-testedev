@@ -8,6 +8,7 @@ use App\Models\Posts;
 use App\Repositories\CategoryRepository;
 use App\Repositories\PostRepository;
 use App\Services\PostService;
+use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -26,11 +27,16 @@ class PostController extends Controller
         $this->postRepository = $postRepository;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $posts = $this->postRepository->all(['order' => 'desc']);
+        $posts = $this->postRepository->all([
+            'order' => 'desc',
+            ...$request->all()
+        ]);
 
-        return view('admin.posts.index', compact('posts'));
+        $categories = $this->categoryRepository->all()->pluck('name', 'id');
+
+        return view('admin.posts.index', compact('posts', 'categories'));
     }
 
     public function create()
