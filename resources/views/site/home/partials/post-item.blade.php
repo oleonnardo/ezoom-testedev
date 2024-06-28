@@ -17,7 +17,7 @@
                     // nao retorna com a primeira letra do mês em maiúsculo, mas funcional
                     opção 2:
                     --}}
-                    {{ $post->created_at->day . ' de ' }} <span class="text-capitalize">{{ $post->created_at->getTranslatedMonthName() }}</span> {{ $post->created_at->year }}
+                    {{ $post->created_at->day . __(' de ') }} <span class="text-capitalize">{{ $post->created_at->getTranslatedMonthName() }}</span> {{ $post->created_at->year }}
                 </div>
                 <a href="javascript:void(0)" class="action"><i class="fa-solid fa-arrow-right"></i></a>
             </div>

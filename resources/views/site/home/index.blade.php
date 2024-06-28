@@ -1,4 +1,4 @@
-@extends('site.layout.app')
+@extends('layouts.site')
 
 @section('slider')
     <section id="slider" class="slider-element include-header">
@@ -7,19 +7,19 @@
                 <div class="row">
                     <div class="col-md-8 col-sm-12 col-12">
                         <div class="slider-caption">
-                            <div>Novas</div>
-                            <div><span>modalidades</span></div>
-                            <div>e ampliação</div>
-                            <div>de <span>horários</span></div>
+                            <div>{{ __('Novas') }}</div>
+                            <div><span>{{ __('modalidades') }}</span></div>
+                            <div>{{ __('e ampliação') }}</div>
+                            <div>{{ __('de') }} <span>{{ __('horários') }}</span></div>
                         </div>
 
                         <div class="slider-subtitle">
-                            Aulas de 45 minutos e período de teste gratuito.
+                            {{ __('Aulas de 45 minutos e período de teste gratuito.') }}
                         </div>
 
                         <div class="slider-button">
                             <a href="javascript:void(0)" class="btn btn-rounded btn-outline-white text-uppercase">
-                                Saiba mais
+                                {{ __('Saiba mais') }}
                             </a>
                         </div>
                     </div>
@@ -55,7 +55,8 @@
                                 // nao retorna com a primeira letra do mês em maiúsculo, mas funcional
                                 opção 2:
                                 --}}
-                                {{ $post->created_at->day . ' de ' }} <span class="text-capitalize">{{ $post->created_at->getTranslatedMonthName() }}</span> {{ $post->created_at->year }}
+                                {{ $post->created_at->day . __(' de ') }} <span
+                                    class="text-capitalize">{{ $post->created_at->getTranslatedMonthName() }}</span> {{ $post->created_at->year }}
                             </div>
                             <a href="javascript:void(0)" class="action"><i class="fa-solid fa-arrow-right"></i></a>
                         </div>
