@@ -44,6 +44,19 @@
                                         <td>{{ $item->created_at->format('d/m/Y H:i') }}</td>
                                         <td>
                                             <div class="flex flex-nowrap justify-content-center align-items-center">
+                                                {{ html()
+                                                    ->form()
+                                                    ->method('post')
+                                                    ->route('adm.posts.activeToggle', $item->id)
+                                                    ->open() }}
+                                                <button type="submit"
+                                                        data-toggle="tooltip"
+                                                        title="{{ __($item->active ? 'Desativar?' : 'Ativar?')  }}"
+                                                        class="text-black-50 mr-3">
+                                                    <i class="fa-solid {{ $item->active ? 'fa-lock' : 'fa-lock-open' }}"></i>
+                                                </button>
+                                                {{ html()->form()->close() }}
+
                                                 <a href="{{ route('adm.posts.edit', $item->id) }}"
                                                    class="text-black-50 mr-3">
                                                     <i class="fa-solid fa-pencil"></i>
@@ -51,13 +64,12 @@
 
                                                 {{ html()
                                                     ->form()
-                                                    ->method('delete')
                                                     ->route('adm.posts.destroy', $item->id)
                                                     ->open() }}
-                                                    @csrf
+                                                    @method('DELETE')
                                                     <button type="submit"
                                                             class="text-black-50"
-                                                            onclick="confirm('{{ __('Tem certeza?') }}') ">
+                                                            onclick="return confirm('{{ __('Tem certeza?') }}') ">
                                                         <i class="fa-solid fa-trash-alt"></i>
                                                     </button>
                                                 {{ html()->form()->close() }}

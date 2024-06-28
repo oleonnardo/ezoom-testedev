@@ -88,4 +88,20 @@ class PostController extends Controller
 
         return redirect()->route('adm.posts.index');
     }
+
+    public function activeToggle(Posts $post)
+    {
+        if (empty($post)) {
+            $this->toastrError('Post não encontrado.');
+            return redirect()->route('adm.posts.index');
+        }
+
+        $this->postRepository->update($post->id, [
+            'active' => ! $post->active
+        ]);
+
+        $this->toastrSuccess('Status do post modificado com sucesso.');
+
+        return redirect()->route('adm.posts.index');
+    }
 }

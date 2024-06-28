@@ -12,7 +12,9 @@ Auth::routes();
 
 Route::match(['get', 'post'], 'logout', [LoginController::class, 'logout']);
 
-Route::name('adm.')->group(function () {
+Route::name('adm.')->middleware('auth')->group(function () {
     Route::get('/home', [AdminHomeController::class, 'index'])->name('home');
     Route::resource('posts', PostController::class)->except('show');
+
+    Route::post('post/{post}/active', [PostController::class, 'activeToggle'])->name('posts.activeToggle');
 });

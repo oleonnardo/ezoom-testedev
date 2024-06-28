@@ -78,6 +78,11 @@
 
 
 <div class="form-group text-right">
-    <a href="{{ route('adm.posts.index') }}" class="btn btn-secondary">{{ __('Voltar') }}</a>
-    <button type="submit" class="btn btn-primary">{{ __('Salvar') }}</button>
+    <a href="{{ route('adm.posts.index') }}" class="btn btn-secondary">
+        <i class="fa-solid fa-arrow-left"></i>
+        {{ __('Voltar') }}
+    </a>
+    <button type="submit" class="btn btn-primary">
+        <i class="fa-solid fa-check"></i> {{ __('Salvar') }}
+    </button>
 </div>

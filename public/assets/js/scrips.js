@@ -127,4 +127,6 @@ $(document).ready(function () {
     EZOOM.dataBackground();
     EZOOM.postsSetBorder();
     EZOOM.owlCarousel();
+
+    $('[data-toggle="tooltip"]').tooltip();
 });
