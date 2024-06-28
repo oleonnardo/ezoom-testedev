@@ -1,5 +1,4 @@
 <div class="py-3">
-
     {{ html()
         ->modelForm(Request::all(), 'get')
         ->autocomplete('off')
@@ -52,6 +51,5 @@
             </a>
         @endif
     </div>
-
     {{ html()->closeModelForm() }}
 </div>
