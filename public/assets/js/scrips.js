@@ -116,7 +116,19 @@ const EZOOM = {
             }
         });
     },
+    headerMobile: function () {
+        var open = $('#open-header-menu');
+        var close = $('#close-header-menu');
+        var header = $('#header-content');
 
+        open.click(function () {
+            header.addClass('open-menu');
+        });
+
+        close.click(function () {
+            header.removeClass('open-menu');
+        });
+    }
 }
 
 window.addEventListener('resize', function() {
@@ -127,6 +139,7 @@ $(document).ready(function () {
     EZOOM.dataBackground();
     EZOOM.postsSetBorder();
     EZOOM.owlCarousel();
+    EZOOM.headerMobile();
 
     var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
     var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {

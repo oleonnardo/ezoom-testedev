@@ -15,7 +15,7 @@
                         </a>
                     </div>
 
-                    <div class="header-nav-menu">
+                    <div id="open-header-menu" class="header-nav-menu">
                         <div class="header-mobile-iconbar">
                             <span></span>
                             <span></span>
@@ -24,7 +24,13 @@
                     </div>
                 </div>
 
-                <div class="header-content">
+                <div id="header-content" class="header-content">
+                    <div class="header-mobile">
+                        <a href="javascript:void(0)" id="close-header-menu">
+                            <i class="fa-solid fa-close"></i>
+                        </a>
+                    </div>
+
                     <nav class="primary-menu">
                         <ul class="menu-container">
                             <li class="menu-item">
