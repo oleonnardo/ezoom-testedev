@@ -37,7 +37,7 @@
                                 <tr>
                                     <th width="5%">ID</th>
                                     <th width="10%">{{ __('Imagem') }}</th>
-                                    <th>{{ __('Título') }}</th>
+                                    <th width="25%">{{ __('Título') }}</th>
                                     <th>{{ __('Categoria') }}</th>
                                     <th width="5%">{{ __('Destaque') }}</th>
                                     <th width="5%">{{ __('Ativo') }}</th>
