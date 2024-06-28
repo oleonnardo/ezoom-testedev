@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\SavePost;
+use App\Models\Posts;
 use App\Repositories\CategoryRepository;
 use App\Repositories\PostRepository;
 use App\Services\PostService;
@@ -43,23 +44,48 @@ class PostController extends Controller
     {
         $this->postService->create($request->validated());
 
-        toastr()->success(__('Post salvo com sucesso.'));
+        $this->toastrSuccess('Post salvo com sucesso.');
 
         return redirect()->route('adm.posts.index');
     }
 
-    public function edit()
+    public function edit(Posts $post)
     {
+        if (empty($post)) {
+            $this->toastrError('Post não encontrado.');
+            return redirect()->route('adm.posts.index');
+        }
 
+        $categories = $this->categoryRepository->all()->pluck('name', 'id');
+
+        return view('admin.posts.edit', compact('post', 'categories'));
     }
 
-    public function update()
+    public function update(Posts $post, SavePost $request)
     {
+        if (empty($post)) {
+            $this->toastrError('Post não encontrado.');
+            return redirect()->route('adm.posts.index');
+        }
 
+        $this->postService->update($post, $request->validated());
+
+        $this->toastrSuccess('Post modificado com sucesso.');
+
+        return redirect()->route('adm.posts.edit', $post->id);
     }
 
-    public function destroy()
+    public function destroy(Posts $post)
     {
+        if (empty($post)) {
+            $this->toastrError('Post não encontrado.');
+            return redirect()->route('adm.posts.index');
+        }
 
+        $this->postService->delete($post);
+
+        $this->toastrSuccess('Post removido com sucesso.');
+
+        return redirect()->route('adm.posts.index');
     }
 }

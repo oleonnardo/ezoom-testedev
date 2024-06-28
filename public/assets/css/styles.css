@@ -12,6 +12,14 @@ a {
     margin-bottom: 20px;
 }
 
+.badge-status {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+    background-color: lightgrey;
+}
+
 .table-middle td,
 .table-middle th {
     vertical-align: middle;

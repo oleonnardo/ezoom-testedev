@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\Posts;
 use App\Repositories\PostRepository;
+use Illuminate\Support\Arr;
 
 class PostService
 {
@@ -23,5 +24,22 @@ class PostService
         $attributes['image'] = $this->fileService->save($attributes['image'], Posts::$imageFolder);
 
         return $this->repository->save($attributes);
+    }
+
+    public function update(Posts $post, array $attributes)
+    {
+        if (Arr::exists($attributes, 'image')) {
+            $attributes['image'] = $this->fileService->save($attributes['image'], Posts::$imageFolder);
+            $this->fileService->delete($post->image);
+        }
+
+        return $this->repository->update($post->id, $attributes);
+    }
+
+    public function delete(Posts $post)
+    {
+        $this->fileService->delete($post->image);
+
+        return $this->repository->delete($post->id);
     }
 }

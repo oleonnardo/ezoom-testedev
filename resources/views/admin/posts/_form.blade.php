@@ -31,6 +31,12 @@
     @error('image')
     <span class="text-danger">{{ $message }}</span>
     @enderror
+
+    @isset($post)
+        <div class="py-2">
+            <img src="{{ $post->image }}" width="100">
+        </div>
+    @endisset
 </div>
 
 <div class="form-group">
@@ -57,19 +63,18 @@
     @enderror
 </div>
 
-@isset($posts)
-    <div class="form-group">
-        {{ html()->label(__('Publicação visível?'), 'active') }}
-        {{ html()
-            ->select('active', ['Não', 'Sim'])
-            ->class('form-control')
-            ->placeholder(__('Selecione uma opção'))
-            ->required() }}
-        @error('active')
-        <span class="text-danger">{{ $message }}</span>
-        @enderror
-    </div>
-@endisset
+<div class="form-group">
+    {{ html()->label(__('Publicação visível?'), 'active') }}
+    {{ html()
+        ->select('active', ['Não', 'Sim'])
+        ->class('form-control')
+        ->placeholder(__('Selecione uma opção'))
+        ->required() }}
+    @error('active')
+    <span class="text-danger">{{ $message }}</span>
+    @enderror
+</div>
+
 
 
 <div class="form-group text-right">

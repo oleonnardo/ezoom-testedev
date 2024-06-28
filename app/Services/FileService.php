@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
 use Ramsey\Uuid\Uuid;
 
@@ -34,6 +35,7 @@ class FileService
 
     public function delete(string $path): bool
     {
+        $path = get_path_from_url($path, ['/storage', 'storage']);
         return Storage::disk($this->disk)->delete($path);
     }
 
