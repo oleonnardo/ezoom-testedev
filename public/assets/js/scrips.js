@@ -41,19 +41,21 @@ const EZOOM = {
         }
     },
     owlCarousel: function () {
-        if (window.innerWidth < 1024) {
-            EZOOM.owlCarouselInFeaturedPosts();
-        } else {
-            if (window.owlCarouselFeatured)
-                window.owlCarouselFeatured.trigger('destroy.owl.carousel')
-
-
-            $(".owl-carousel").find('.owl-stage-outer').remove();
-            $(".owl-carousel").removeClass("owl-loaded owl-drag");
-        }
+        EZOOM.owlCarouselInFeaturedPosts();
+        EZOOM.owlCarouselInCategories();
+    },
+    owlCarouselDestroy: function (element) {
+        element.trigger('destroy.owl.carousel')
+        element.find('.owl-stage-outer').remove();
+        element.removeClass("owl-loaded owl-drag");
     },
     owlCarouselInFeaturedPosts() {
         var element = $(".posts-featured.overlay-card-hover");
+
+        if (window.innerWidth >= 1024) {
+            EZOOM.owlCarouselDestroy(element);
+            return false;
+        }
 
         element.addClass('owl-carousel');
         element.find('.post-featured-item').addClass('item');
@@ -83,7 +85,38 @@ const EZOOM = {
                 }
             }
         });
-    }
+    },
+    owlCarouselInCategories() {
+        var element = $(".category-posts");
+
+        if (window.innerWidth >= 768) {
+            EZOOM.owlCarouselDestroy(element);
+            return false;
+        }
+
+        element.addClass('owl-carousel');
+
+        window.owlCarouselFeatured = element.owlCarousel({
+            loop: false,
+            margin: 0,
+            responsiveClass: true,
+            responsive:{
+                0:{
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 2,
+                    nav: false
+                },
+                768: {
+                    items: 3,
+                    nav: false
+                },
+            }
+        });
+    },
+
 }
 
 window.addEventListener('resize', function() {

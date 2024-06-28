@@ -854,10 +854,28 @@ OWL CAROUSEL
     .slider-button a {
         font-size: 10px;
     }
+
+    /*
+    ----------------------------------
+    CATEGORIES
+    ----------------------------------
+    */
+    .categories-with-posts .category-item h1 {
+        font-size: 35px;
+    }
+
+    .categories-with-posts .category-item .see-more a {
+        font-size: 11px;
+        padding: 5px 18px;
+    }
 }
 
 @media (max-width: 768px) {
-
+    /*
+    ----------------------------------
+    POSTS
+    ----------------------------------
+    */
     .post-featured-item .content {
         min-height: 300px;
     }
@@ -865,10 +883,42 @@ OWL CAROUSEL
     .slider-inner .container {
         padding-top: 90px;
     }
+
+    /*
+    ----------------------------------
+    CATEGORIES
+    ----------------------------------
+    */
+    .categories-with-posts .category-item {
+        padding: 2rem 0.5rem 2rem 2rem;
+    }
+
+    .categories-with-posts .category-item h1 {
+        text-align: center;
+        margin-bottom: 25px;
+    }
+
+    .categories-with-posts .category-item .subtitle,
+    .categories-with-posts .category-item .see-more {
+        display: none;
+    }
+
+    .category-posts .category-posts-item .post-featured-banner {
+        height: 130px;
+    }
+
+    .category-posts .category-posts-item {
+        margin: 10px;
+    }
+
 }
 
 @media (max-width: 600px) {
-
+    /*
+    ----------------------------------
+    POSTS
+    ----------------------------------
+    */
     .post-featured-item .content {
         min-height: 250px;
     }
@@ -877,11 +927,25 @@ OWL CAROUSEL
 
 @media (max-width: 480px) {
 
+    /*
+    ----------------------------------
+    POSTS
+    ----------------------------------
+    */
     .posts-featured .post-featured-item {
         max-height: 350px;
     }
 
     .post-featured-item .content {
         min-height: 350px;
+    }
+
+    /*
+    ----------------------------------
+    CATEGORIES
+    ----------------------------------
+    */
+    .category-posts .category-posts-item .post-featured-banner {
+        height: 160px;
     }
 }

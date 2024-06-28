@@ -1,4 +1,4 @@
-<div class="col-md-4 col-12">
+<div class="item col-md-4 col-12">
     <div class="category-posts-item position-relative"
          style="--item-color: {{ $category->color }};"
          data-border-color="{{ $category->color }}"

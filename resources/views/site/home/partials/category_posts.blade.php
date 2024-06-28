@@ -1,7 +1,7 @@
 <div class="category-item {{ $key%2 === 0 ? 'category-item-odd' : '' }}"
      data-border-color="{{ $category->color }}"
      data-border-position="left">
-    <div class="row">
+    <div class="row align-items-center">
         <div class="col-md-4 col-sm-12 col-12">
             <div class="px-0 px-sm-2 px-md-3">
                 <h1 class="text-uppercase ft-thin">
