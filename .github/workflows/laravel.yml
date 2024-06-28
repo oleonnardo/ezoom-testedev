@@ -34,7 +34,6 @@ jobs:
             **/.git*/**
             **/node_modules/**
             **/.idea/**
-            **/database/**
             **/tests/**
             **/public/**
             **/docker/**
