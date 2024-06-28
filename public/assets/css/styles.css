@@ -902,14 +902,6 @@ WHASTAPP
         padding-top: 20px;
     }
 
-    .slider-subtitle {
-        font-size: 12px;
-    }
-
-    .slider-button a {
-        font-size: 10px;
-    }
-
     /*
     ----------------------------------
     CATEGORIES
@@ -985,6 +977,16 @@ WHASTAPP
     */
     .post-featured-item .content {
         min-height: 250px;
+    }
+
+    /*
+    ----------------------------------
+    SLIDERS
+    ----------------------------------
+    */
+    .slider-element .slider-caption {
+        font-size: 55px;
+        line-height: 50px;
     }
 
 }
