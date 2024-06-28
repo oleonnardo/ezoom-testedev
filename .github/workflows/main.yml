@@ -1,0 +1,44 @@
+on:
+  push:
+    branches:
+      - origin-master
+name: Version 1.1
+jobs:
+  web-deploy:
+    name: 🎉 EZOOM DEPLOY
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v3
+
+      - name: 📂 Sync files - FRONTEND
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.ftp_server }}
+          username: ${{ secrets.ftp_username_ezoom }}
+          password: ${{ secrets.ftp_password_ezoom }}
+          local-dir: ./public/
+          server-dir: ./ezoomdev/
+          exclude: |
+            - index.php
+
+      - name: 📂 Sync files - BACKEND
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.ftp_server }}
+          username: ${{ secrets.ftp_username_ezoom }}
+          password: ${{ secrets.ftp_password_ezoom }}
+          server-dir: ../app_projects/ezoomdev/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/.idea/**
+            **/database/**
+            **/tests/**
+            **/public/**
+            **/docker/**
+            **/stubs/**
+            **/*/debugbar/
+            **/*/logs/.log*
+            **/*/framework/cache/
