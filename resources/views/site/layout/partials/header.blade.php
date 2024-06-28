@@ -8,6 +8,22 @@
                     </a>
                 </div>
 
+                <div class="header-mobile">
+                    <div class="header-icon-search">
+                        <a href="javascript:void(0)">
+                            <i class="fa fa-search"></i>
+                        </a>
+                    </div>
+
+                    <div class="header-nav-menu">
+                        <div class="header-mobile-iconbar">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="header-content">
                     <nav class="primary-menu">
                         <ul class="menu-container">

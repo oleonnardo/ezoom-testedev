@@ -9,7 +9,7 @@
              data-background="{{ $post->image }}"></div>
 
         <div class="content">
-            <div class="title"><a href="#">{{ $post->title }}</a></div>
+            <div class="title"><a href="javascript:void(0)">{{ $post->title }}</a></div>
             <div class="foot">
                 <div class="date">
                     {{--
@@ -19,7 +19,7 @@
                     --}}
                     {{ $post->created_at->day . ' de ' }} <span class="text-capitalize">{{ $post->created_at->getTranslatedMonthName() }}</span> {{ $post->created_at->year }}
                 </div>
-                <a href="#" class="action"><i class="fa-solid fa-arrow-right"></i></a>
+                <a href="javascript:void(0)" class="action"><i class="fa-solid fa-arrow-right"></i></a>
             </div>
         </div>
     </div>

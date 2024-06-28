@@ -11,7 +11,7 @@
                     {{ $category->short_description }}
                 </div>
                 <div class="see-more">
-                    <a href="#" class="btn btn-outline-black btn-rounded text-uppercase">
+                    <a href="javascript:void(0)" class="btn btn-outline-black btn-rounded text-uppercase">
                         Ver todos
                     </a>
                 </div>

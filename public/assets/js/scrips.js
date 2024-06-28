@@ -39,10 +39,59 @@ const EZOOM = {
                 $this.append(`<div class="featured-border effect-border ${position_border}" style="background-color: ${color}"></div>`);
             })
         }
+    },
+    owlCarousel: function () {
+        if (window.innerWidth < 1024) {
+            EZOOM.owlCarouselInFeaturedPosts();
+        } else {
+            if (window.owlCarouselFeatured)
+                window.owlCarouselFeatured.trigger('destroy.owl.carousel')
+
+
+            $(".owl-carousel").find('.owl-stage-outer').remove();
+            $(".owl-carousel").removeClass("owl-loaded owl-drag");
+        }
+    },
+    owlCarouselInFeaturedPosts() {
+        var element = $(".posts-featured.overlay-card-hover");
+
+        element.addClass('owl-carousel');
+        element.find('.post-featured-item').addClass('item');
+
+        window.owlCarouselFeatured = element.owlCarousel({
+            loop: false,
+            margin: 0,
+            responsiveClass: true,
+            responsive:{
+                0:{
+                    items: 1,
+                    nav: false
+                },
+                480: {
+                    items: 2,
+                    nav: false
+                },
+                768: {
+                    items: 3,
+                    nav: false
+                },
+                1000: {
+                    items: 4,
+                    nav: false,
+                    dots: true,
+                    loop: false
+                }
+            }
+        });
     }
 }
+
+window.addEventListener('resize', function() {
+    EZOOM.owlCarousel();
+});
 
 $(document).ready(function () {
     EZOOM.dataBackground();
     EZOOM.postsSetBorder();
+    EZOOM.owlCarousel();
 });
