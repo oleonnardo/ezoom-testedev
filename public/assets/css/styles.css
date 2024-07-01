@@ -22,6 +22,11 @@ a {
     opacity: .8;
 }
 
+body.header-open-menu {
+    overflow: hidden;
+    position: fixed;
+}
+
 .badge-status {
     width: 10px;
     height: 10px;

@@ -120,13 +120,16 @@ const EZOOM = {
         var open = $('#open-header-menu');
         var close = $('#close-header-menu');
         var header = $('#header-content');
+        var body = $('body');
 
         open.click(function () {
             header.addClass('open-menu');
+            body.addClass('header-open-menu');
         });
 
         close.click(function () {
             header.removeClass('open-menu');
+            body.removeClass('header-open-menu');
         });
     }
 }
