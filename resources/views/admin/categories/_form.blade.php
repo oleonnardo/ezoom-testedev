@@ -27,6 +27,11 @@
     {{ html()
         ->text('color')
         ->class('form-control color-input')
+        ->attributes([
+            'data-jscolor' => json_encode([
+
+            ])
+        ])
         ->maxlength(250)
         ->required() }}
     @error('short_description')
@@ -84,15 +89,6 @@
     </button>
 </div>
 
-@push('css')
-    <link rel="stylesheet" href="{{ asset('assets/plugins/colorpicker/jquery.colorpicker.css') }}"/>
-@endpush
-
 @push('js')
-    <script src="{{ asset('assets/plugins/colorpicker/jquery.colorpicker.js') }}"></script>
-    <script>
-        $(document).ready(function () {
-            $('.color-input').colorpicker();
-        });
-    </script>
+    <script src="{{ asset('assets/plugins/jscolor/jscolor.min.js') }}"></script>
 @endpush
