@@ -13,5 +13,5 @@
 <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}" crossorigin="anonymous">
 <link rel="stylesheet" href="{{ asset('assets/css/font-icons.css') }}" type="text/css" />
 <link rel="stylesheet" href="{{ asset('assets/css/animate.css') }}" type="text/css" />
-<link rel="stylesheet" href="{{ asset('assets/css/styles.css') }}" type="text/css" />
+<link rel="stylesheet" href="{{ asset('assets/css/styles.css?') . time() }}" type="text/css" />
 @stack('css')
