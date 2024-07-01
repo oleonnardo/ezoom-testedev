@@ -90,5 +90,5 @@
 </div>
 
 @push('js')
-    <script src="{{ asset('assets/plugins/jscolor/jscolor.min.js') }}"></script>
+    <script src="{{ asset('assets/plugins/colorpicker/jscolor.min.js') }}"></script>
 @endpush
