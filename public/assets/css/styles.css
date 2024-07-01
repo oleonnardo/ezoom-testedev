@@ -964,7 +964,7 @@ CARDS
         flex-direction: column;
         flex-wrap: nowrap;
         align-items: center;
-        gap: 15px;
+        gap: 20px;
         justify-content: center;
     }
 
@@ -1069,6 +1069,10 @@ CARDS
 
     .min-w-200px {
         min-width: 200px;
+    }
+    
+    ul.menu-container .menu-item a {
+        font-size: 14px;
     }
 
     /*
