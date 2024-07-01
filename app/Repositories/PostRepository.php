@@ -46,6 +46,9 @@ class PostRepository implements RepositoryInterface
         return Posts::with('category')
             ->where('highlight', '=', 1)
             ->where('active', '=', 1)
+            ->whereHas('category', function ($query) {
+                $query->where('active', '=', 1);
+            })
             ->take($limit)
             ->orderByDesc('id')
             //->latest()

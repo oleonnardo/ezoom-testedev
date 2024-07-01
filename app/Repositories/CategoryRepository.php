@@ -13,7 +13,18 @@ class CategoryRepository implements RepositoryInterface
 {
     public function all(array $filter = [])
     {
-        return Category::filter($filter)->get();
+        return Category::filter($filter)
+            ->withCount('posts')
+            ->orderBy('id', Arr::get($filter, 'order', 'asc'))
+            ->when(
+                Arr::get($filter, 'paginate'),
+                function ($query) {
+                    return $query->paginate();
+                },
+                function ($query) {
+                    $query->get();
+                }
+            );
     }
 
     public function getById(int $id)
@@ -23,7 +34,6 @@ class CategoryRepository implements RepositoryInterface
 
     public function save(array $attributes): Model
     {
-        $attributes['slug'] = now()->format('His') . Str::slug($attributes['title']);
         return Category::create($attributes);
     }
 

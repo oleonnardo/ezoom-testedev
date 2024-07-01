@@ -95,6 +95,26 @@ class PostController extends Controller
         return redirect()->route('adm.posts.index');
     }
 
+    public function highlightToggle(Posts $post)
+    {
+        if (empty($post)) {
+            $this->toastrError('Post não encontrado.');
+            return redirect()->route('adm.posts.index');
+        }
+
+        $this->postRepository->update($post->id, [
+            'highlight' => ! $post->highlight
+        ]);
+
+        if ($post->highlight) {
+            $this->toastrSuccess('O post foi destacado na página inicial.');
+        } else {
+            $this->toastrSuccess('O post foi removido da lista de destaques.');
+        }
+
+        return redirect()->route('adm.posts.index');
+    }
+
     public function activeToggle(Posts $post)
     {
         if (empty($post)) {
